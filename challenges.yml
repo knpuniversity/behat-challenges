@@ -1,1 +1,66 @@
+# BddFeatures
+bddfeatures_registrationfeaturecoding:
+    question: >
+        You've assembled a crack team for a brand new project:
+        a site where paleontologists and other dinosaur scientists
+        can send each other important scientific messages, along
+        with the usual cat photos.
 
+        Each scientist will need to register to gain access, and
+        you - knowing that using BDD will create a better product -
+        are writing a registration feature. Fill in the 4 feature
+        lines in `registration.feature`.
+    step: ~
+    files:
+        registration.feature: ~
+    features:
+        editor: ~
+        browser: ~
+    grading:
+#        $this->assertLineStartsWith(
+#            $lines,
+#            'Feature:',
+#            'a short feature description',
+#            0,
+#            false
+#        );
+        check_line_1:
+            type: behat
+            # @TODO Implement file() function with ability to get specified line for Behat expression provider
+            assertTrue: file('registration.feature').line(1) matches /^Feature:/
+            failure: a short feature description
+#        $this->assertLineStartsWith(
+#            $lines,
+#            'In order to',
+#            'your *business* value',
+#            1,
+#            true
+#        );
+        check_line_2:
+            type: behat
+            assertTrue: file('registration.feature').line(2) matches /^In order to/
+            failure: your *business* value
+#        $this->assertLineStartsWith(
+#            $lines,
+#            'As a',
+#            '*who* will benefit from the feature',
+#            2,
+#            true
+#        );
+        check_line_3:
+            type: behat
+            assertTrue: file('registration.feature').line(3) matches /^As a/
+            failure: your *business* value
+#        $this->assertLineStartsWith(
+#            $lines,
+#            'I need to be able to',
+#            'a short description of what the user will do with the feature',
+#            3,
+#            true
+#        );
+        check_line_4:
+            type: behat
+            assertTrue: file('registration.feature').line(4) matches /^I need to be able to/
+            failure: a short description of what the user will do with the feature
+
+bddfeatures_bestbusinessvaluemc: ~
