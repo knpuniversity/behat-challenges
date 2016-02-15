@@ -64,3 +64,23 @@ bddfeatures_registrationfeaturecoding:
             failure: a short description of what the user will do with the feature
 
 bddfeatures_bestbusinessvaluemc: ~
+    question: >
+        For the messaging feature, you and the intern (Bob) are in
+        a heated debate over how to phrase the business value.
+        Which if the following is the *best* business value for the
+        message feature:
+    explanation: >
+        Business value is subjective. But to help, forget about the technology
+        and think about the problem that your user role (scientist) wants to
+        solve. Both "communicate" and "exchange information and resources"
+        are pretty good business values, but I like the second, because it
+        contains a few more details about what the scientists actually
+        want to do.
+    features:
+        multiple_choice:
+            choices:
+                a: In order to type messages and click to send them to scientists.
+                b: In order to communicate with other scientists.
+                c: In order to exchange information and resources with other scientists.
+                d: In order to send cat videos.
+            correct: c
