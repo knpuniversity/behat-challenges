@@ -17,54 +17,54 @@ bddfeatures_registrationfeaturecoding:
         editor: ~
         browser: ~
     grading:
-#        $this->assertLineStartsWith(
-#            $lines,
-#            'Feature:',
-#            'a short feature description',
-#            0,
-#            false
-#        );
+        #        $this->assertLineStartsWith(
+        #            $lines,
+        #            'Feature:',
+        #            'a short feature description',
+        #            0,
+        #            false
+        #        );
         check_line_1:
             type: behat
             # @TODO Implement file() function with ability to get specified line for Behat expression provider
             # @TODO Maybe start numering feature's lines from 1 instead of 0..? Not sure here
             assertTrue: file('registration.feature').line(1) matches /^Feature:/
             failure: a short feature description
-#        $this->assertLineStartsWith(
-#            $lines,
-#            'In order to',
-#            'your *business* value',
-#            1,
-#            true
-#        );
+        #        $this->assertLineStartsWith(
+        #            $lines,
+        #            'In order to',
+        #            'your *business* value',
+        #            1,
+        #            true
+        #        );
         check_line_2:
             type: behat
             assertTrue: file('registration.feature').line(2) matches /^In order to/
             failure: your *business* value
-#        $this->assertLineStartsWith(
-#            $lines,
-#            'As a',
-#            '*who* will benefit from the feature',
-#            2,
-#            true
-#        );
+        #        $this->assertLineStartsWith(
+        #            $lines,
+        #            'As a',
+        #            '*who* will benefit from the feature',
+        #            2,
+        #            true
+        #        );
         check_line_3:
             type: behat
             assertTrue: file('registration.feature').line(3) matches /^As a/
             failure: your *business* value
-#        $this->assertLineStartsWith(
-#            $lines,
-#            'I need to be able to',
-#            'a short description of what the user will do with the feature',
-#            3,
-#            true
-#        );
+        #        $this->assertLineStartsWith(
+        #            $lines,
+        #            'I need to be able to',
+        #            'a short description of what the user will do with the feature',
+        #            3,
+        #            true
+        #        );
         check_line_4:
             type: behat
             assertTrue: file('registration.feature').line(4) matches /^I need to be able to/
             failure: a short description of what the user will do with the feature
 
-bddfeatures_bestbusinessvaluemc: ~
+bddfeatures_bestbusinessvaluemc:
     question: >
         For the messaging feature, you and the intern (Bob) are in
         a heated debate over how to phrase the business value.
@@ -124,31 +124,34 @@ scenarios_registrationscenariocoding:
             # @TODO Maybe start numering scenario from 1 instead of 0..? Not sure here
             assertFalse: feature('registration.feature').getScenario(1).getTitle() == ''
             failure: Make sure to put a short title after your scenario
-#        $steps = $scenario->getSteps();
-#        $hasGiven = false;
-#        $hasWhen = false;
-#        $hasThen = false;
-#        foreach ($steps as $step) {
-#            if ('Given' == $step->getType()) {
-#                $hasGiven = true;
-#            } elseif ('When' == $step->getType()) {
-#                $hasWhen = true;
-#            } elseif ('Then' == $step->getType()) {
-#                $hasThen = true;
-#            }
-#        }
+        #        $steps = $scenario->getSteps();
+        #        $hasGiven = false;
+        #        $hasWhen = false;
+        #        $hasThen = false;
+        #        foreach ($steps as $step) {
+        #            if ('Given' == $step->getType()) {
+        #                $hasGiven = true;
+        #            } elseif ('When' == $step->getType()) {
+        #                $hasWhen = true;
+        #            } elseif ('Then' == $step->getType()) {
+        #                $hasThen = true;
+        #            }
+        #        }
         check_given:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('Given')
-            failure: I don't see a `Given` in your scenario: you probably want one to start on the "/" page
+            failure: |
+                I don't see a `Given` in your scenario: you probably want one to start on the "/" page
         check_when:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('When')
-            failure: I don't see a `When` in your scenario: you definitely need some, like for clicking Register, filling out the fields and pressing the submit button
+            failure: |
+                I don't see a `When` in your scenario: you definitely need some, like for clicking Register, filling out the fields and pressing the submit button
         check_then:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('Then')
-            failure: I don't see a `Then` in your scenario: you probably want one where you check if the success message was shown
+            failure: |
+                I don't see a `Then` in your scenario: you probably want one where you check if the success message was shown
 
 scenarios_badscenariomc:
     question: >
@@ -221,27 +224,27 @@ usingbehat_lsfeaturecoding:
         check_given_in_scenario_1:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('Given')
-            failure: I don't see a `Given` in your first scenario: you probably want one to have a hidden file starting with `.`.
+            failure: "I don't see a `Given` in your first scenario: you probably want one to have a hidden file starting with `.`."
         check_when_in_scenario_1:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('When')
-            failure: I don't see a `When` in your first scenario: you definitely need some, like for running commands in the terminal.
+            failure: "I don't see a `When` in your first scenario: you definitely need some, like for running commands in the terminal."
         check_then_in_scenario_1:
             type: behat
             assertTrue: feature('registration.feature').getScenario(1).hasStep('Then')
-            failure: I don't see a `Then` in your first scenario: you probably want one where you check if the success message was shown.
+            failure: "I don't see a `Then` in your first scenario: you probably want one where you check if the success message was shown."
         check_given_in_scenario_2:
             type: behat
             assertTrue: feature('registration.feature').getScenario(2).hasStep('Given')
-            failure: I don't see a `Given` in your second scenario: you probably want one to have a hidden file starting with `.`.
+            failure: "I don't see a `Given` in your second scenario: you probably want one to have a hidden file starting with `.`."
         check_when_in_scenario_2:
             type: behat
             assertTrue: feature('registration.feature').getScenario(2).hasStep('When')
-            failure: I don't see a `When` in your second scenario: you definitely need some, like for running commands in the terminal.
+            failure: "I don't see a `When` in your second scenario: you definitely need some, like for running commands in the terminal."
         check_then_in_scenario_2:
             type: behat
             assertTrue: feature('registration.feature').getScenario(2).hasStep('Then')
-            failure: I don't see a `Then` in your second scenario: you probably want one where you check if the success message was shown.
+            failure: "I don't see a `Then` in your second scenario: you probably want one where you check if the success message was shown."
 
 usingbehat_independentscenariosmc:
     question: >
