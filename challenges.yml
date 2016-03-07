@@ -1,6 +1,6 @@
 # BddFeatures
 bddfeatures_registrationfeaturecoding:
-    question: >
+    question: |
         You've assembled a crack team for a brand new project:
         a site where paleontologists and other dinosaur scientists
         can send each other important scientific messages, along
@@ -65,12 +65,12 @@ bddfeatures_registrationfeaturecoding:
             failure: a short description of what the user will do with the feature
 
 bddfeatures_bestbusinessvaluemc:
-    question: >
+    question: |
         For the messaging feature, you and the intern (Bob) are in
         a heated debate over how to phrase the business value.
         Which if the following is the *best* business value for the
         message feature:
-    explanation: >
+    explanation: |
         Business value is subjective. But to help, forget about the technology
         and think about the problem that your user role (scientist) wants to
         solve. Both "communicate" and "exchange information and resources"
@@ -88,7 +88,7 @@ bddfeatures_bestbusinessvaluemc:
 
 # Scenarios
 scenarios_registrationscenariocoding:
-    question: >
+    question: |
         After writing the feature for registration, the whole team
         (even Bob the intern!) is excited about BDD! Let's write the
         first scenario for our feature where we register successfully.
@@ -154,7 +154,7 @@ scenarios_registrationscenariocoding:
                 I don't see a `Then` in your scenario: you probably want one where you check if the success message was shown
 
 scenarios_badscenariomc:
-    question: >
+    question: |
         Check out the following scenario. What's wrong here?
 
         ```gherkin
@@ -167,7 +167,7 @@ scenarios_badscenariomc:
             And I press "Send"
             Then a message from "dr_dino@example.com" should be sent
         ```
-    explanation: >
+    explanation: |
         In `Given`, you *can* "play god" and do things like database setup that your
         user cannot do. That's it's biggest purpose. But, it's also "ok" to take some
         user action - like logging in - when that user action really isn't central
@@ -188,7 +188,7 @@ scenarios_badscenariomc:
 
 # UsingBehat
 usingbehat_lsfeaturecoding:
-    question: >
+    question: |
         Linus just told us about an edge case with the `ls` command:
         it does *not* show files starting with a `.` by default.
         To test for this, we've added two new scenarios that make sure
@@ -247,7 +247,7 @@ usingbehat_lsfeaturecoding:
             failure: "I don't see a `Then` in your second scenario: you probably want one where you check if the success message was shown."
 
 usingbehat_independentscenariosmc:
-    question: >
+    question: |
         The intern Bob is writing some scenarios that describe
         the behavior of the account area of our paleontology app.
         Do you see any problems with the second scenario?
@@ -268,7 +268,7 @@ usingbehat_independentscenariosmc:
             And I click "My Account"
             Then I should see "My Account Information"
         ```
-    explanation: >
+    explanation: |
         Each scenario should act completely independent of other scenarios.
         Right now, in order for scenario 2 to pass, you *must* run scenario 1
         first. This makes your scenarios very fragile and difficult to debug.
@@ -279,20 +279,20 @@ usingbehat_independentscenariosmc:
     features:
         multiple_choice:
             choices:
-                a: >
+                a: |
                     The second scenario shouldn't start on `/login`, it should start
                     on `/` and then you should click a "Login" link.
-                b: >
+                b: |
                     Scenario 2 uses the `dr_dino@example.com` user from scenario 1,
                     but each scenario should act completely independent of each other.
-                c: >
+                c: |
                     The second scenario shouldn't need to repeat the email address
                     and password, since it is already in the first scenario.
             correct: b
 
 # BehatHooksBackground
 behathooksbackground_afterstephookcoding:
-    question: >
+    question: |
         As a challenge, create a new function called `afterStepHook()` that
         is called after *every* individual step in a scenario. Inside of
         this, just execute `var_dump('After Step!');`.
@@ -323,7 +323,7 @@ behathooksbackground_afterstephookcoding:
             failure: You should to use `@AfterStep` annotation for `afterStepHook()` method.
 
 behathooksbackground_checksteptestresultcoding:
-    question: >
+    question: |
         Whenever you have a hook function, you're actually passed an `$event`
         argument object that contains information about what's happening inside Behat
         at this moment. The exact object depends on which hook you're using
