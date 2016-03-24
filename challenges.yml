@@ -8,8 +8,9 @@ bddfeatures_registrationfeaturecoding:
 
         Each scientist will need to register to gain access, and
         you - knowing that using BDD will create a better product -
-        are writing a registration feature. Fill in the 4 feature
-        lines in `registration.feature`.
+        are writing a registration feature.
+    question_steps:
+        - Write the 4 feature lines in `registration.feature`, doing your best to focus on the business value!
     step: ~
     files:
         registration.feature: ~
