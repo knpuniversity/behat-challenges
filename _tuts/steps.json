@@ -1,0 +1,20 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "bdd-features-registration-feature-coding",
+            "name": "BDD Features: Registration Feature Coding",
+            "description": null
+        },
+        {
+            "id": "bdd-features-registration-feature-coding-solution",
+            "name": "BDD Features: Registration Feature Coding [Solution]",
+            "description": null
+        }
+    ],
+    "sha": "a0caf17297c0da8dabd524f3fa7a474d1f3401bf"
+}

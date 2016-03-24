@@ -1,0 +1,8 @@
+diff --git a/registration.feature b/registration.feature
+new file mode 100644
+index 0000000..139597f
+--- /dev/null
++++ b/registration.feature
+@@ -0,0 +1,2 @@
++
++
