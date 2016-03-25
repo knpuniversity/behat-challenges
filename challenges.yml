@@ -11,59 +11,30 @@ bddfeatures_registrationfeaturecoding:
         are writing a registration feature.
     question_steps:
         - Write the 4 feature lines in `registration.feature`, doing your best to focus on the business value!
-    step: ~
+    step: 'bdd-features-registration-feature-coding'
     files:
         registration.feature: ~
     features:
         editor: ~
-        browser: ~
+        browser:
+            default_uri: /grade.php
     grading:
-        #        $this->assertLineStartsWith(
-        #            $lines,
-        #            'Feature:',
-        #            'a short feature description',
-        #            0,
-        #            false
-        #        );
         check_line_1:
             type: behat
-            # @TODO Implement file() function with ability to get specified line for Behat expression provider
-            # @TODO Maybe start numering feature's lines from 1 instead of 0..? Not sure here
-            assertTrue: file('registration.feature').line(1) matches /^Feature:/
-            failure: a short feature description
-        #        $this->assertLineStartsWith(
-        #            $lines,
-        #            'In order to',
-        #            'your *business* value',
-        #            1,
-        #            true
-        #        );
+            assertTrue: "file('registration.feature').line(1).startsWith('Feature:')"
+            failure: On line 1, start with `Feature:` and then a short description of the feature.
         check_line_2:
             type: behat
-            assertTrue: file('registration.feature').line(2) matches /^In order to/
-            failure: your *business* value
-        #        $this->assertLineStartsWith(
-        #            $lines,
-        #            'As a',
-        #            '*who* will benefit from the feature',
-        #            2,
-        #            true
-        #        );
+            assertTrue: "file('registration.feature').line(2).startsWith('  In order to')"
+            failure: Make sure line 2 is indented with *2* spaces, followed by `In order to` and then the *business* value this feature brings.
         check_line_3:
             type: behat
-            assertTrue: file('registration.feature').line(3) matches /^As a/
-            failure: your *business* value
-        #        $this->assertLineStartsWith(
-        #            $lines,
-        #            'I need to be able to',
-        #            'a short description of what the user will do with the feature',
-        #            3,
-        #            true
-        #        );
+            assertTrue: "file('registration.feature').line(3).startsWith('  As a')"
+            failure: Indent line 3 two spaces and then write `As a` followed by *who* will benefit from this feature.
         check_line_4:
             type: behat
-            assertTrue: file('registration.feature').line(4) matches /^I need to be able to/
-            failure: a short description of what the user will do with the feature
+            assertTrue: "file('registration.feature').line(4).startsWith('  I need to be able to')"
+            failure: Also indent line 4 two spaces, and then write `I need to be able to` followed by a short description of what the above user will do with this feature.
 
 bddfeatures_bestbusinessvaluemc:
     question: |
