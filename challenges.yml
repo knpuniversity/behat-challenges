@@ -9,6 +9,17 @@ bddfeatures_registrationfeaturecoding:
         Each scientist will need to register to gain access, and
         you - knowing that using BDD will create a better product -
         are writing a registration feature.
+    explanation: |
+        As long as you have the right format, and really focused on
+        *why* you're working on this feature (i.e. the business value),
+        you're in great shape. If you're curious, here's our answer:
+
+        ```gherkin
+        Feature: Registration
+          In order to send and receive messages from scientists I know
+          As a scientist
+          I need to be able to register for a new account
+        ```
     question_steps:
         - Write the 4 feature lines in `registration.feature`, doing your best to focus on the business value!
     step: 'bdd-features-registration-feature-coding'
@@ -18,6 +29,7 @@ bddfeatures_registrationfeaturecoding:
         editor: ~
         browser:
             default_uri: /grade.php
+            visible: false
     grading:
         check_line_1:
             type: behat
@@ -40,15 +52,16 @@ bddfeatures_bestbusinessvaluemc:
     question: |
         For the messaging feature, you and the intern (Bob) are in
         a heated debate over how to phrase the business value.
-        Which if the following is the *best* business value for the
+        Which of the following is the *best* business value for the
         message feature:
     explanation: |
-        Business value is subjective. But to help, forget about the technology
-        and think about the problem that your user role (scientist) wants to
+        Business value is subjective. But to help with this: forget about the technology
+        and instead think about the problem that your user role (the scientist) wants to
         solve. Both "communicate" and "exchange information and resources"
         are pretty good business values, but I like the second, because it
         contains a few more details about what the scientists actually
-        want to do.
+        want to do. However, we also realize that most people will probably
+        just send cat videos. <span class="fa fa-paw"></span>
     features:
         multiple_choice:
             choices:
@@ -62,68 +75,66 @@ bddfeatures_bestbusinessvaluemc:
 scenarios_registrationscenariocoding:
     question: |
         After writing the feature for registration, the whole team
-        (even Bob the intern!) is excited about BDD! Let's write the
-        first scenario for our feature where we register successfully.
-        After some conversation, you basically want it to work like this:
+        (even Bob the intern!) is excited about BDD!
 
-        1. You start on the homepage
-        2. You click a link called "Register"
-        3. You fill out an "Email" field and a "Password" field
-        4. You press a "Register" button
-        5. You see some text on the page, like "Hi Dr. Paleontology Person! Welcome!"
+        Time to write your first scenario for registration. **Add
+        a scenario that reflects the user story described**. The
+        most important thing is to use natural language!
+    question_steps:
+        - 'Write a scenario that describes this user story:'
+        - You start on the homepage
+        - You click a link called "Register"
+        - You fill out an "Email" field and a "Password" field
+        - You press a "Register" button
+        - You see some text on the page, like "Hi Dr. Paleontology Person! Welcome!"
+    explanation: |
+        The most important thing - other than getting the *format* correct -
+        is to use *natural* language from the point of view of the user
+        in the `As a ` feature line. Here's our solution:
 
-        Add a scenario that represents this, and compare your answer
-        to ours. The most important thing is that you're using natural
-        language.
-    step: ~
+        ```gherkin
+        Scenario: Successfully register
+          Given I am on "/"
+          When I click "Register"
+          And I fill in "Email" with "dr_dino@example.com"
+          And I fill in "Password" with "r00000ar"
+          And I press "Register"
+          Then I should see "Hi Dr. Paleontology Person! Welcome!"
+        ```
+
+    # uses the solution step from the previous challenge
+    step: bdd-features-registration-feature-coding-solution
     files:
         registration.feature: ~
     features:
         editor: ~
-        browser: ~
+        browser:
+            default_uri: /grade.php
+            visible: false
     grading:
         check_scenarios:
             type: behat
-            # @TODO Implement feature() function in order to get next info:
-            # - .hasScenarios()
-            # - .getScenario(1)
-            # - .getScenario(1).getTitle()
-            # - .getScenario(1).hasStep('Given')
             assertTrue: feature('registration.feature').hasScenarios()
-            failure: I don't see *any* scenarios. Check your syntax on the scenario
+            failure: "I don't see *any* scenarios. Make sure you added a `Scenario: <some title>` line for the scenario."
         check_scenario_title:
             type: behat
-            # @TODO Maybe start numering scenario from 1 instead of 0..? Not sure here
             assertFalse: feature('registration.feature').getScenario(1).getTitle() == ''
             failure: Make sure to put a short title after your scenario
-        #        $steps = $scenario->getSteps();
-        #        $hasGiven = false;
-        #        $hasWhen = false;
-        #        $hasThen = false;
-        #        foreach ($steps as $step) {
-        #            if ('Given' == $step->getType()) {
-        #                $hasGiven = true;
-        #            } elseif ('When' == $step->getType()) {
-        #                $hasWhen = true;
-        #            } elseif ('Then' == $step->getType()) {
-        #                $hasThen = true;
-        #            }
-        #        }
         check_given:
             type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('Given')
+            assertTrue: feature('registration.feature').getScenario(1).hasStepType('Given')
             failure: |
-                I don't see a `Given` in your scenario: you probably want one to start on the "/" page
+                I don't see a `Given` in your scenario: you probably want one that starts the user on the "/" page.
         check_when:
             type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('When')
+            assertTrue: feature('registration.feature').getScenario(1).hasStepType('When')
             failure: |
-                I don't see a `When` in your scenario: you definitely need some, like for clicking Register, filling out the fields and pressing the submit button
+                I don't see a `When` in your scenario: you definitely need some, like for clicking `Register`, filling out the fields and pressing the submit button.
         check_then:
             type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('Then')
+            assertTrue: feature('registration.feature').getScenario(1).hasStepType('Then')
             failure: |
-                I don't see a `Then` in your scenario: you probably want one where you check if the success message was shown
+                I don't see a `Then` in your scenario: you need one that checks if the success message was shown.
 
 scenarios_badscenariomc:
     question: |
@@ -141,14 +152,15 @@ scenarios_badscenariomc:
         ```
     explanation: |
         In `Given`, you *can* "play god" and do things like database setup that your
-        user cannot do. That's it's biggest purpose. But, it's also "ok" to take some
+        user cannot do. That's its biggest purpose. But, it's also "ok" to take some
         user action - like logging in - when that user action really isn't central
         to what your scenario is really trying to do.
 
         The real problem is the `Then`: it is describing something that the user
         cannot see. What does it mean that the message "should be sent"? Unlike `Given`,
         we can't give the user super-powers here and allow them to "see" technical
-        things, like messages being sent or database records being inserted.
+        things, like messages being sent or database records being inserted. Instead,
+        assert that the user sees a success message.
     features:
         multiple_choice:
             choices:
@@ -160,9 +172,10 @@ scenarios_badscenariomc:
 
 # UsingBehat
 usingbehat_lsfeaturecoding:
+    # this challenge is a TODO - it requires a terminal
     question: |
         Linus just told us about an edge case with the `ls` command:
-        it does *not* show files starting with a `.` by default.
+        it should *not* show files starting with a `.` by default.
         To test for this, we've added two new scenarios that make sure
         that a `.dino` file only shows up with the `-a` option.
 
@@ -180,7 +193,7 @@ usingbehat_lsfeaturecoding:
         check_scenarios:
             type: behat
             assertTrue: feature('ls.feature').hasScenarios()
-            failure: I don't see *any* scenarios. Check your syntax on the scenario
+            failure: "I don't see *any* scenarios. Make sure you added a `Scenario: <some title>` line for the scenario."
         count_scenarios:
             type: behat
             assertFalse: feature('ls.feature').countScenarios() == 2
@@ -222,7 +235,7 @@ usingbehat_independentscenariosmc:
     question: |
         The intern Bob is writing some scenarios that describe
         the behavior of the account area of our paleontology app.
-        Do you see any problems with the second scenario?
+        Do you see any problems with these two scenarios?
 
         ```gherkin
         Scenario: Register
