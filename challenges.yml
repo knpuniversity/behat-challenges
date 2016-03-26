@@ -278,21 +278,31 @@ usingbehat_independentscenariosmc:
 # BehatHooksBackground
 behathooksbackground_afterstephookcoding:
     question: |
-        As a challenge, create a new function called `afterStepHook()` that
-        is called after *every* individual step in a scenario. Inside of
-        this, just execute `var_dump('After Step!');`.
+        You can hook into the Behat process and perform some action
+        after *every* scenario or even after every individual
+        step in a scenario.
 
-        **Hint**
+        As a challenge, create a new function that is called after *every*
+        individual step in a scenario.
+
+        ***TIP
         See [hooking into the test process](http://docs.behat.org/en/v3.0/guides/3.hooks.html)
         for the annotation needed to do things after every step.
-    step: ~
+        ***
+    question_steps:
+        - Create a new function called `afterStepHook()`
+        - Add an annotation so that this method is called after *every* individual step in a scenario
+        - Inside of the method, just execute `var_dump('After Step!');`
+    step: behat-hooks-background-afterstep-hook
     files:
         features/bootstrap/FeatureContext.php: ~
         ls.feature:
             read_only: true
     features:
         editor: ~
-        browser: ~
+        browser:
+            default_uri: /grade.php
+            visible: false
     grading:
         check_method:
             type: php
@@ -325,7 +335,9 @@ behathooksbackground_checksteptestresultcoding:
             read_only: true
     features:
         editor: ~
-        browser: ~
+        browser:
+            default_uri: /grade.php
+            visible: false
     grading:
         check_method:
             type: php
