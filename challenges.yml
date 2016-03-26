@@ -142,13 +142,13 @@ scenarios_badscenariomc:
 
         ```gherkin
         Scenario: Sending a message
-            Given there is a "dr_dino@example.com" user in the database
-            And I am logged in as "dr_dino@example.com"
-            And I am on "/"
-            When I click "Send Message"
-            And I fill in the message box with "Hello everyone!"
-            And I press "Send"
-            Then a message from "dr_dino@example.com" should be sent
+          Given there is a "dr_dino@example.com" user in the database
+          And I am logged in as "dr_dino@example.com"
+          And I am on "/"
+          When I click "Send Message"
+          And I fill in the message box with "Hello everyone!"
+          And I press "Send"
+          Then a message from "dr_dino@example.com" should be sent
         ```
     explanation: |
         In `Given`, you *can* "play god" and do things like database setup that your
@@ -171,65 +171,65 @@ scenarios_badscenariomc:
             correct: d
 
 # UsingBehat
-usingbehat_lsfeaturecoding:
-    # this challenge is a TODO - it requires a terminal
-    question: |
-        Linus just told us about an edge case with the `ls` command:
-        it should *not* show files starting with a `.` by default.
-        To test for this, we've added two new scenarios that make sure
-        that a `.dino` file only shows up with the `-a` option.
-
-        Execute Behat from the command line, copy in the new step definition,
-        and then fill in the contents so that our scenario passes.
-    step: ~
-    files:
-        ls.feature: ~
-        features/bootstrap/FeatureContext.php:
-            read_only: true
-    features:
-        editor: ~
-        browser: ~
-    grading:
-        check_scenarios:
-            type: behat
-            assertTrue: feature('ls.feature').hasScenarios()
-            failure: "I don't see *any* scenarios. Make sure you added a `Scenario: <some title>` line for the scenario."
-        count_scenarios:
-            type: behat
-            assertFalse: feature('ls.feature').countScenarios() == 2
-            failure: Make sure to create only a *2* new scenarios.
-        check_first_scenario_title:
-            type: behat
-            assertFalse: feature('ls.feature').getScenario(1).getTitle() == ''
-            failure: Make sure to put a short title after your first scenario.
-        check_second_scenario_title:
-            type: behat
-            assertFalse: feature('ls.feature').getScenario(2).getTitle() == ''
-            failure: Make sure to put a short title after your second scenario
-        check_given_in_scenario_1:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('Given')
-            failure: "I don't see a `Given` in your first scenario: you probably want one to have a hidden file starting with `.`."
-        check_when_in_scenario_1:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('When')
-            failure: "I don't see a `When` in your first scenario: you definitely need some, like for running commands in the terminal."
-        check_then_in_scenario_1:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(1).hasStep('Then')
-            failure: "I don't see a `Then` in your first scenario: you probably want one where you check if the success message was shown."
-        check_given_in_scenario_2:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(2).hasStep('Given')
-            failure: "I don't see a `Given` in your second scenario: you probably want one to have a hidden file starting with `.`."
-        check_when_in_scenario_2:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(2).hasStep('When')
-            failure: "I don't see a `When` in your second scenario: you definitely need some, like for running commands in the terminal."
-        check_then_in_scenario_2:
-            type: behat
-            assertTrue: feature('registration.feature').getScenario(2).hasStep('Then')
-            failure: "I don't see a `Then` in your second scenario: you probably want one where you check if the success message was shown."
+# this is a TODO - it requires a terminal
+#usingbehat_lsfeaturecoding:
+#    question: |
+#        Linus just told us about an edge case with the `ls` command:
+#        it should *not* show files starting with a `.` by default.
+#        To test for this, we've added two new scenarios that make sure
+#        that a `.dino` file only shows up with the `-a` option.
+#
+#        Execute Behat from the command line, copy in the new step definition,
+#        and then fill in the contents so that our scenario passes.
+#    step: ~
+#    files:
+#        ls.feature: ~
+#        features/bootstrap/FeatureContext.php:
+#            read_only: true
+#    features:
+#        editor: ~
+#        browser: ~
+#    grading:
+#        check_scenarios:
+#            type: behat
+#            assertTrue: feature('ls.feature').hasScenarios()
+#            failure: "I don't see *any* scenarios. Make sure you added a `Scenario: <some title>` line for the scenario."
+#        count_scenarios:
+#            type: behat
+#            assertFalse: feature('ls.feature').countScenarios() == 2
+#            failure: Make sure to create only a *2* new scenarios.
+#        check_first_scenario_title:
+#            type: behat
+#            assertFalse: feature('ls.feature').getScenario(1).getTitle() == ''
+#            failure: Make sure to put a short title after your first scenario.
+#        check_second_scenario_title:
+#            type: behat
+#            assertFalse: feature('ls.feature').getScenario(2).getTitle() == ''
+#            failure: Make sure to put a short title after your second scenario
+#        check_given_in_scenario_1:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(1).hasStep('Given')
+#            failure: "I don't see a `Given` in your first scenario: you probably want one to have a hidden file starting with `.`."
+#        check_when_in_scenario_1:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(1).hasStep('When')
+#            failure: "I don't see a `When` in your first scenario: you definitely need some, like for running commands in the terminal."
+#        check_then_in_scenario_1:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(1).hasStep('Then')
+#            failure: "I don't see a `Then` in your first scenario: you probably want one where you check if the success message was shown."
+#        check_given_in_scenario_2:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(2).hasStep('Given')
+#            failure: "I don't see a `Given` in your second scenario: you probably want one to have a hidden file starting with `.`."
+#        check_when_in_scenario_2:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(2).hasStep('When')
+#            failure: "I don't see a `When` in your second scenario: you definitely need some, like for running commands in the terminal."
+#        check_then_in_scenario_2:
+#            type: behat
+#            assertTrue: feature('registration.feature').getScenario(2).hasStep('Then')
+#            failure: "I don't see a `Then` in your second scenario: you probably want one where you check if the success message was shown."
 
 usingbehat_independentscenariosmc:
     question: |
@@ -239,19 +239,19 @@ usingbehat_independentscenariosmc:
 
         ```gherkin
         Scenario: Register
-            Given I am on "/"
-            When I fill in "email" with "dr_dino@example.com"
-            And I fill in "password" with "roar"
-            And I press "Register"
-            Then I should see "You're registered!"
+          Given I am on "/"
+          When I fill in "email" with "dr_dino@example.com"
+          And I fill in "password" with "roar"
+          And I press "Register"
+          Then I should see "You're registered!"
 
         Scenario: View my account area
-            Given I am on "/login"
-            When I fill in "email" with "dr_dino@example.com"
-            And I fill in "password" with "roar"
-            And I press "Login"
-            And I click "My Account"
-            Then I should see "My Account Information"
+          Given I am on "/login"
+          When I fill in "email" with "dr_dino@example.com"
+          And I fill in "password" with "roar"
+          And I press "Login"
+          And I click "My Account"
+          Then I should see "My Account Information"
         ```
     explanation: |
         Each scenario should act completely independent of other scenarios.
