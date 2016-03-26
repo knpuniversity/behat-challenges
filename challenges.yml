@@ -317,45 +317,46 @@ behathooksbackground_afterstephookcoding:
             assertTrue: "class('FeatureContext').getMethod('afterStepHook').hasAnnotation('@AfterStep')"
             failure: You should add the `@AfterStep` annotation above the `afterStepHook()` method.
 
-behathooksbackground_checksteptestresultcoding:
-    question: |
-        Whenever you have a hook function, you're actually passed an `$event`
-        argument object that contains information about what's happening inside Behat
-        at this moment. The exact object depends on which hook you're using
-        (see [Behat Hooks](http://docs.behat.org/en/v3.0/guides/3.hooks.html#hooks)).
-
-        In `afterStepHook()`, add an `$event` argument and use it to figure out
-        if the step that was just executed passed or failed. Replace `var_dump('After Step!')`
-        with `var_dump($isPassed)` where `$isPassed` is equal to whether or not
-        the previous step passed/failed.
-    step: ~
-    files:
-        features/bootstrap/FeatureContext.php: ~
-        ls.feature:
-            read_only: true
-    features:
-        editor: ~
-        browser:
-            default_uri: /grade.php
-            visible: false
-    grading:
-        check_method:
-            type: php
-            assertTrue: reflection_class('FeatureContext').hasMethod('afterStepHook')
-            failure: The `afterStepHook()` method wasn't found in the `FeatureContext` class.
-        check_method_is_public:
-            type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').isPublic()
-            failure: The `afterStepHook()` method should be public.
-        assert_doc_comment:
-            type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getDocComment() matches /@AfterStep/
-            failure: You should to use `@AfterStep` annotation for `afterStepHook()` method.
-        assert_number_of_required_parameters:
-            type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getNumberOfRequiredParameters() == 1
-            failure: Make sure you give the `afterStepHook()` method exactly one argument.
-        assert_parameter_name:
-            type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getParameters()[0]->getName() == 'event'
-            failure: Though you can really call it anything, let's call the argument to `afterStepHook()` `$event` for clarity.
+# todo - isn't good enough until we have a terminal
+#behathooksbackground_checksteptestresultcoding:
+#    question: |
+#        Whenever you have a hook function, Behat passes you an `$event`
+#        argument that contains information about what's happening inside Behat
+#        at this moment. The exact object depends on which hook you're using
+#        (see [Behat Hooks](http://docs.behat.org/en/v3.0/guides/3.hooks.html#hooks)).
+#
+#        In `afterStepHook()`, add an `$event` argument and use it to figure out
+#        if the step that was just executed passed or failed. Replace `var_dump('After Step!')`
+#        with `var_dump($isPassed)` where `$isPassed` is equal to whether or not
+#        the previous step passed/failed.
+#    step: behat-hooks-background-afterstep-hook-solution
+#    files:
+#        features/bootstrap/FeatureContext.php: ~
+#        ls.feature:
+#            read_only: true
+#    features:
+#        editor: ~
+#        browser:
+#            default_uri: /grade.php
+#            visible: false
+#    grading:
+#        check_method:
+#            type: php
+#            assertTrue: reflection_class('FeatureContext').hasMethod('afterStepHook')
+#            failure: The `afterStepHook()` method wasn't found in the `FeatureContext` class.
+#        check_method_is_public:
+#            type: php
+#            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').isPublic()
+#            failure: The `afterStepHook()` method should be public.
+#        assert_doc_comment:
+#            type: php
+#            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getDocComment() matches /@AfterStep/
+#            failure: You should to use `@AfterStep` annotation for `afterStepHook()` method.
+#        assert_number_of_required_parameters:
+#            type: php
+#            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getNumberOfRequiredParameters() == 1
+#            failure: Make sure you give the `afterStepHook()` method exactly one argument.
+#        assert_parameter_name:
+#            type: php
+#            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getParameters()[0]->getName() == 'event'
+#            failure: Though you can really call it anything, let's call the argument to `afterStepHook()` `$event` for clarity.
