@@ -306,16 +306,16 @@ behathooksbackground_afterstephookcoding:
     grading:
         check_method:
             type: php
-            assertTrue: reflection_class('FeatureContext').hasMethod('afterStepHook')
+            assertTrue: class('FeatureContext').hasMethod('afterStepHook')
             failure: The `afterStepHook()` method wasn't found in the `FeatureContext` class.
         check_method_is_public:
             type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').isPublic()
+            assertTrue: class('FeatureContext').getMethod('afterStepHook').isPublic()
             failure: The `afterStepHook()` method should be public.
         assert_doc_comment:
             type: php
-            assertTrue: reflection_class('FeatureContext').getMethod('afterStepHook').getDocComment() matches /@AfterStep/
-            failure: You should to use `@AfterStep` annotation for `afterStepHook()` method.
+            assertTrue: "class('FeatureContext').getMethod('afterStepHook').hasAnnotation('@AfterStep')"
+            failure: You should add the `@AfterStep` annotation above the `afterStepHook()` method.
 
 behathooksbackground_checksteptestresultcoding:
     question: |

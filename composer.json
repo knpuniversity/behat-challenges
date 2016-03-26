@@ -2,5 +2,8 @@
     "require": {
         "behat/mink-extension": "^2.2",
         "behat/mink-goutte-driver": "^1.2"
+    },
+    "autoload": {
+        "classmap": ["features/bootstrap/FeatureContext.php"]
     }
 }
