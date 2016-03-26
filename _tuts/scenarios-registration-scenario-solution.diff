@@ -1,0 +1,16 @@
+diff --git a/registration.feature b/registration.feature
+index 05af2e9..1b86934 100644
+--- a/registration.feature
++++ b/registration.feature
+@@ -2,3 +2,11 @@ Feature: Registration
+   In order to send and receive messages from scientists I know
+   As a scientist
+   I need to be able to register for a new account
++
++  Scenario: Successfully register
++    Given I am on "/"
++    When I click "Register"
++    And I fill in "Email" with "dr_dino@example.com"
++    And I fill in "Password" with "r00000ar"
++    And I press "Register"
++    Then I should see "Hi Dr. Paleontology Person! Welcome!"

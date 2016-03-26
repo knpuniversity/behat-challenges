@@ -1,11 +1,11 @@
 diff --git a/registration.feature b/registration.feature
-index 139597f..287cbee 100644
+index 139597f..05af2e9 100644
 --- a/registration.feature
 +++ b/registration.feature
-@@ -1,2 +1,5 @@
+@@ -1,2 +1,4 @@
+-
 -
 +Feature: Registration
 +  In order to send and receive messages from scientists I know
 +  As a scientist
 +  I need to be able to register for a new account
- 

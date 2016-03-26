@@ -1,0 +1,17 @@
+diff --git a/features/bootstrap/FeatureContext.php b/features/bootstrap/FeatureContext.php
+index 541c2ec..610cf42 100644
+--- a/features/bootstrap/FeatureContext.php
++++ b/features/bootstrap/FeatureContext.php
+@@ -71,4 +71,12 @@ class FeatureContext extends MinkContext implements Context, SnippetAcceptingCon
+             system('rm -r '.realpath('test'));
+         }
+     }
++
++    /**
++     * @AfterStep()
++     */
++	public function afterStepHook()
++    {
++        var_dump('After Step!');
++    }
+ }

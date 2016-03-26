@@ -14,7 +14,22 @@
             "id": "bdd-features-registration-feature-coding-solution",
             "name": "BDD Features: Registration Feature Coding [Solution]",
             "description": null
+        },
+        {
+            "id": "scenarios-registration-scenario-solution",
+            "name": "Scenarios: Registration Scenario [Solution]",
+            "description": null
+        },
+        {
+            "id": "behat-hooks-background-afterstep-hook",
+            "name": "Behat Hooks Background: AfterStep Hook",
+            "description": null
+        },
+        {
+            "id": "behat-hooks-background-afterstep-hook-solution",
+            "name": "Behat Hooks Background: AfterStep Hook [Solution]",
+            "description": null
         }
     ],
-    "sha": "a0caf17297c0da8dabd524f3fa7a474d1f3401bf"
+    "sha": "09ed81a66836f8af518519fdb5eacedfdd1f0273"
 }
