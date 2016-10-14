@@ -286,7 +286,7 @@ behathooksbackground_afterstephookcoding:
         individual step in a scenario.
 
         ***TIP
-        See [hooking into the test process](http://docs.behat.org/en/v3.0/guides/3.hooks.html)
+        See [hooking into the test process](http://behat.org/en/v3.0/user_guide/context/hooks.html)
         for the annotation needed to do things after every step.
         ***
     question_steps:
