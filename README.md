@@ -1,2 +1,2 @@
-# behat-challenges 
+# behat-challenges  
 Challenges for the Behat tutorial
